@@ -4,7 +4,7 @@ using UnityEngine;
 public class ButtonsManagerView : MonoBehaviour
 {
 
-    private KinematicsView _kinematicsView;
+    [SerializeField] private KinematicsView _kinematicsView;
     private EntryButtonView[] _buttons;
 
     private void OnEnable()
@@ -24,14 +24,13 @@ public class ButtonsManagerView : MonoBehaviour
 
     private void Awake()
     {    
-        _kinematicsView = GetComponent<KinematicsView>();
         _buttons = GetComponentsInChildren<EntryButtonView>();
     }
 
     private void StartKinematicsScene()
     {
-        Debug.Log("started");
         StartCoroutine(KinematicsCoroutine());
+        _kinematicsView.DoKinematicsScene();
     }
 
     private void TurnOffButtons()
@@ -44,19 +43,18 @@ public class ButtonsManagerView : MonoBehaviour
 
     private void TurnOnButtons()
     {
-        Debug.Log("prekol");
         foreach(EntryButtonView button in _buttons)
         {
-            Debug.Log("buba");
             button.TurnOnButton();
         }
     }
 
     private IEnumerator KinematicsCoroutine()
     {
-        Debug.Log("ggg");
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(20.0f);
         TurnOnButtons();
+        _kinematicsView.StopMovement();
+        _kinematicsView.DestroyObjects();
     }
 
 }

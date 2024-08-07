@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class TrackingTargetView : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2D;

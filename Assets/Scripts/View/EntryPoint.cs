@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class EntryPoint : MonoBehaviour
 {
+    [SerializeField] private EntryButtonView _kinematicsButtonView;
+    [SerializeField] private EntryButtonView _dynamicsButtonView;
+
     private void Awake()
     {
-        var targetData = new TrackingTargetData(5.0f);
-        GetComponent<TrackingTargetView>().Initialise(targetData);
+        _kinematicsButtonView.Initialise(new EntryButtonData(EntryButtonData.Directions.Kinematics));
+        _dynamicsButtonView.Initialise(new EntryButtonData(EntryButtonData.Directions.Dynamics));
     }
 }
