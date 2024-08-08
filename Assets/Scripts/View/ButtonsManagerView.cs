@@ -51,7 +51,7 @@ public class ButtonsManagerView : MonoBehaviour
 
     private IEnumerator KinematicsCoroutine()
     {
-        yield return new WaitForSeconds(20.0f);
+        yield return new WaitForSeconds(90.0f);
         TurnOnButtons();
         _kinematicsView.StopMovement();
         _kinematicsView.DestroyObjects();
